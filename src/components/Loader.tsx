@@ -8,7 +8,7 @@ export default function Loader() {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    const timer = setTimeout(() => setVisible(false), 1900);
+    const timer = setTimeout(() => setVisible(false), 2400);
     return () => clearTimeout(timer);
   }, []);
 
@@ -30,9 +30,9 @@ export default function Loader() {
             className="absolute inset-x-0 top-0 flex h-1/2 items-end justify-center overflow-hidden bg-white"
           >
             <motion.span
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ opacity: 0, y: "-100%" }}
+              animate={{ opacity: 1, y: "0%" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
               className="select-none whitespace-nowrap font-pixel text-[13vw] leading-none tracking-tight text-carnival-navy sm:text-[9vw]"
             >
               CHILDRENS
@@ -47,9 +47,9 @@ export default function Loader() {
             className="absolute inset-x-0 bottom-0 flex h-1/2 items-start justify-center overflow-hidden bg-carnival-navy"
           >
             <motion.span
-              initial={{ opacity: 0, y: -24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: "0%" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.35 }}
               className="select-none whitespace-nowrap font-pixel text-[13vw] leading-none tracking-tight text-carnival-yellow sm:text-[9vw]"
             >
               PARK
