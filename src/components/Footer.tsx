@@ -1,85 +1,202 @@
+import {
+  Mail,
+  Share2,
+  MessageSquare,
+  Send,
+  Hexagon,
+  ArrowRight,
+} from "lucide-react";
+
+const FOOTER_LINKS = {
+  Product: [
+    { label: "Features", href: "#" },
+    { label: "Integrations", href: "#" },
+    { label: "Pricing", href: "#" },
+    { label: "Changelog", href: "#" },
+  ],
+  Resources: [
+    { label: "Documentation", href: "#" },
+    { label: "API Reference", href: "#" },
+    { label: "Community", href: "#" },
+    { label: "Blog", href: "#" },
+  ],
+  Company: [
+    { label: "About Us", href: "#" },
+    { label: "Careers", href: "#" },
+    { label: "Partners", href: "#" },
+    { label: "Contact", href: "#" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "#" },
+    { label: "Terms of Service", href: "#" },
+    { label: "Cookie Policy", href: "#" },
+    { label: "Security", href: "#" },
+  ],
+};
+
 const SOCIALS = [
-  { label: "Facebook", emoji: "📘" },
-  { label: "Instagram", emoji: "📸" },
-  { label: "YouTube", emoji: "▶️" },
+  { label: "Email", icon: Mail, href: "#" },
+  { label: "Share", icon: Share2, href: "#" },
+  { label: "Chat", icon: MessageSquare, href: "#" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-carnival-navy pt-16 text-white">
-      <svg
-        viewBox="0 0 1440 60"
-        className="absolute -top-1 left-0 w-full text-white"
-        preserveAspectRatio="none"
+    <footer className="relative overflow-hidden border-t border-slate-800 bg-slate-950 text-slate-300">
+      {/* Subtle Background Glow */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[1000px] -translate-x-1/2 opacity-20"
         aria-hidden="true"
       >
-        <path
-          d="M0 40 C 240 0 480 0 720 30 C 960 60 1200 60 1440 20 L1440 60 L0 60 Z"
-          fill="currentColor"
-        />
-      </svg>
+        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-indigo-500/40 to-transparent blur-3xl" />
+      </div>
 
-      <div className="mx-auto max-w-7xl px-5 pb-10 sm:px-8">
-        <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div>
+      <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-16 sm:pt-24 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          {/* Brand & Newsletter Section */}
+          <div className="space-y-8 xl:col-span-1">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-carnival-pink via-carnival-orange to-carnival-yellow text-lg">
-                🎡
-              </span>
-              <span className="font-display text-xl font-bold">
-                Children&apos;s Park
+              <Hexagon className="h-7 w-7 fill-indigo-500/20 text-indigo-500" />
+              <span className="text-xl font-bold tracking-tight text-white">
+                Nexus
               </span>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
-              Kurnool&apos;s favourite amusement park — thrilling rides,
-              joyful entertainment, and delicious treats for the whole
-              family.
+
+            <p className="text-sm leading-6 text-slate-400">
+              Accelerate your development workflow. Build better, ship faster,
+              and scale infinitely with our next-generation platform.
             </p>
-            <div className="mt-5 flex gap-3">
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.label}
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-sm transition-colors hover:bg-carnival-pink"
-                  aria-label={social.label}
-                >
-                  {social.emoji}
-                </a>
-              ))}
+
+            <form className="relative max-w-sm">
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
+              <input
+                type="email"
+                name="email-address"
+                id="email-address"
+                autoComplete="email"
+                required
+                className="w-full rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none ring-indigo-500 transition-all focus:border-indigo-500 focus:bg-slate-900 focus:ring-1"
+                placeholder="Subscribe to our newsletter"
+              />
+              <button
+                type="submit"
+                className="absolute bottom-1 right-1 top-1 flex items-center justify-center rounded-md bg-indigo-600 px-3 text-white transition-colors hover:bg-indigo-500"
+                aria-label="Subscribe"
+              >
+                <Send className="h-4 w-4" />
+              </button>
+            </form>
+          </div>
+
+          {/* Links Grid */}
+          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-white">Product</h3>
+                <ul className="mt-6 space-y-4">
+                  {FOOTER_LINKS.Product.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 transition-colors hover:text-white"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold text-white">Resources</h3>
+                <ul className="mt-6 space-y-4">
+                  {FOOTER_LINKS.Resources.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 transition-colors hover:text-white"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
-
-          <div>
-            <p className="font-display font-bold">Explore</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li><a href="#rides" className="hover:text-white">Rides &amp; Attractions</a></li>
-              <li><a href="#stalls" className="hover:text-white">Food &amp; Entertainment</a></li>
-              <li><a href="#gallery" className="hover:text-white">Gallery</a></li>
-              <li><a href="#visit" className="hover:text-white">Plan Your Visit</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-display font-bold">Visit Us</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li>Children&apos;s Park, Kurnool</li>
-              <li>Andhra Pradesh, India — 518001</li>
-              <li>Tue – Sun, 10 AM – 9 PM</li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-display font-bold">Get In Touch</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li>+91 98765 43210</li>
-              <li>hello@childrensparkkurnool.in</li>
-            </ul>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-white">Company</h3>
+                <ul className="mt-6 space-y-4">
+                  {FOOTER_LINKS.Company.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 transition-colors hover:text-white"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-semibold text-white">Legal</h3>
+                <ul className="mt-6 space-y-4">
+                  {FOOTER_LINKS.Legal.map((item) => (
+                    <li key={item.label}>
+                      <a
+                        href={item.href}
+                        className="text-sm leading-6 transition-colors hover:text-white"
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
-        <p className="pt-8 text-center text-xs text-white/40">
-          © {new Date().getFullYear()} Children&apos;s Park, Kurnool. All rights reserved. Made with 💛 in Andhra Pradesh.
-        </p>
+        {/* Bottom Bar */}
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-slate-800/80 pt-8 md:flex-row md:items-center">
+          {/* Status Indicator */}
+          <a
+            href="#"
+            className="group flex items-center gap-2 text-xs text-slate-400 transition-colors hover:text-slate-300"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            </span>
+            All systems operational
+            <ArrowRight className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+          </a>
+
+          {/* Socials */}
+          <div className="flex items-center gap-5">
+            {SOCIALS.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  className="text-slate-500 transition-colors hover:text-white"
+                  aria-label={social.label}
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              );
+            })}
+          </div>
+
+          {/* Copyright */}
+          <p className="text-xs leading-5 text-slate-500">
+            &copy; {new Date().getFullYear()} Nexus Technologies, Inc. All
+            rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );
