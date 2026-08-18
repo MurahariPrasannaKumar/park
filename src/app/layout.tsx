@@ -32,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${baloo.variable} ${nunito.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-sky-50 font-body text-slate-800">
+      <body className="min-h-full flex flex-col bg-[#f9f8f6] font-body text-slate-800">
         {children}
       </body>
     </html>

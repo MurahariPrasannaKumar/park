@@ -122,8 +122,7 @@ const headerVariants = {
 export default function Stalls() {
   return (
     <section
-      id="stalls"
-      className="relative bg-[#FFFDF9] py-24 overflow-hidden"
+      className="relative bg-[#f9f8f6] py-24 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* Header Section */}

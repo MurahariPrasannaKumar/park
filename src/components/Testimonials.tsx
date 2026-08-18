@@ -29,7 +29,7 @@ const REVIEWS = [
 
 export default function Testimonials() {
   return (
-    <section className="relative bg-white py-24">
+    <section className="relative bg-[#f9f8f6] py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

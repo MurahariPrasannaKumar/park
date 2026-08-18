@@ -31,7 +31,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="relative bg-slate-50 py-24">
+    <section className="relative bg-[#f9f8f6] py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -58,7 +58,7 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-100"
+                className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-100 shadow-[0_4px_15px_rgba(20,33,61,0.06)]"
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}

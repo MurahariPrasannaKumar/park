@@ -143,7 +143,7 @@ export default function IconicRides() {
   const currentRides = RIDES_DATA[activeCategory] || [];
 
   return (
-    <section className="relative flex min-h-[800px] w-full flex-col overflow-hidden bg-zinc-50 lg:flex-row">
+    <section className="relative flex min-h-[800px] w-full flex-col overflow-hidden bg-[#f9f8f6] lg:flex-row">
       {/* 
         =========================================
         LEFT SIDEBAR: CATEGORY NAVIGATION

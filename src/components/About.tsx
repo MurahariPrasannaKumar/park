@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-// Updated HIGHLIGHTS to include content for the back of the flipped cards
+// Content for the right-side flip cards
 const HIGHLIGHTS = [
   {
     emoji: "🌳",
@@ -28,7 +29,26 @@ const HIGHLIGHTS = [
   },
 ];
 
+// High-quality placeholder images for the carousel
+const CAROUSEL_IMAGES = [
+  "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1573322741548-c9c417935706?auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1508253730651-e5ace80a7025?auto=format&fit=crop&w=800&q=80",
+];
+
+const AUTOPLAY_INTERVAL = 4000;
+
 export default function About() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Auto-play logic for the carousel
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
+    }, AUTOPLAY_INTERVAL);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="about" className="relative overflow-hidden bg-white py-24 sm:py-32">
       {/* Subtle Background Glow typical in SaaS landing pages */}
@@ -38,7 +58,7 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
 
-          {/* LEFT: 3D Model Area */}
+          {/* LEFT: Premium Image Carousel */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -46,33 +66,48 @@ export default function About() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="relative mx-auto aspect-square w-full max-w-md lg:max-w-lg"
           >
-            {/* Premium backdrop for the 3D model */}
-            <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-amber-50/80 via-teal-50/50 to-sky-100/80 shadow-2xl shadow-slate-200/50" />
-            <div className="absolute inset-0 rounded-[2.5rem] ring-1 ring-inset ring-slate-900/5" />
+            {/* Premium backdrop/container for the carousel */}
+            <div className="absolute inset-0 rounded-[2.5rem] bg-slate-100 shadow-2xl shadow-slate-200/50" />
+            <div className="absolute inset-0 z-20 rounded-[2.5rem] ring-1 ring-inset ring-slate-900/5" />
 
-            {/* 
-              3D Spline Embed 
-              Replace the 'src' below with your own Spline export URL if you have a custom model!
-            */}
             <div className="relative h-full w-full overflow-hidden rounded-[2.5rem]">
-              <iframe
-                src="https://my.spline.design/interactivespheres-8dd63116fcdeae43f11d13db431ab4be/"
-                frameBorder="0"
-                width="100%"
-                height="100%"
-                className="pointer-events-auto relative z-10 h-full w-full scale-[1.15]"
-                title="3D Abstract Model"
-              ></iframe>
+              {/* Animated Carousel Images */}
+              <AnimatePresence>
+                <motion.img
+                  key={currentImageIndex}
+                  src={CAROUSEL_IMAGES[currentImageIndex]}
+                  initial={{ opacity: 0, scale: 1.05 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  alt={`Amusement Park View ${currentImageIndex + 1}`}
+                />
+              </AnimatePresence>
 
-              {/* Floating Badge Overlay over the 3D model */}
+              {/* Subtle gradient overlay to ensure text/badge readability */}
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-slate-900/20 to-transparent" />
+
+              {/* Floating Badge Overlay over the carousel */}
               <div className="pointer-events-none absolute bottom-8 left-0 right-0 z-20 flex justify-center">
-                <div className="flex items-center gap-3 rounded-2xl border border-white/40 bg-white/60 px-6 py-3 shadow-lg backdrop-blur-md">
+                <div className="flex items-center gap-3 rounded-2xl border border-white/40 bg-white/70 px-6 py-3 shadow-lg backdrop-blur-md">
                   <span className="text-xl">🎪</span>
                   <div className="flex flex-col">
                     <span className="text-sm font-bold text-slate-900">Since 1998</span>
                     <span className="text-xs font-medium text-slate-600">A Kurnool Landmark</span>
                   </div>
                 </div>
+              </div>
+
+              {/* Optional: Minimalist Carousel Indicators */}
+              <div className="absolute bottom-4 left-0 right-0 z-20 flex justify-center gap-2">
+                {CAROUSEL_IMAGES.map((_, idx) => (
+                  <div
+                    key={idx}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentImageIndex ? "w-4 bg-white" : "w-1.5 bg-white/50"
+                      }`}
+                  />
+                ))}
               </div>
             </div>
           </motion.div>

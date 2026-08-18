@@ -29,7 +29,7 @@ const OFFERS = [
 
 export default function Offers() {
   return (
-    <section id="offers" className="relative bg-gradient-to-b from-white to-carnival-pink/5 py-24">
+    <section id="offers" className="relative bg-[#f9f8f6] py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

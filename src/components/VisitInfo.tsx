@@ -28,7 +28,7 @@ const INFO = [
 
 export default function VisitInfo() {
   return (
-    <section id="visit" className="relative bg-white py-24">
+    <section id="visit" className="relative bg-[#f9f8f6] py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center">
           <motion.div
