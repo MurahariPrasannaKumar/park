@@ -40,9 +40,9 @@ export default function Navbar() {
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-carnival-pink via-carnival-orange to-carnival-yellow text-lg shadow-md animate-wiggle">
             🎡
           </span>
-          <span className="font-display text-xl font-bold leading-none text-carnival-navy sm:text-2xl">
+          <span className={`font-display text-xl font-bold leading-none sm:text-2xl transition-colors ${scrolled ? "text-carnival-navy" : "text-white"}`}>
             Children&apos;s Park
-            <span className="mt-0.5 flex items-center gap-1 text-[11px] font-semibold tracking-wide text-carnival-blue/80">
+            <span className={`mt-0.5 flex items-center gap-1 text-[11px] font-semibold tracking-wide transition-colors ${scrolled ? "text-carnival-blue/80" : "text-zinc-200"}`}>
               <MapPin className="h-3 w-3" /> KURNOOL, ANDHRA PRADESH
             </span>
           </span>
@@ -53,7 +53,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
-              className="font-display text-sm font-semibold text-carnival-navy/80 transition-colors hover:text-carnival-pink"
+              className={`font-display text-sm font-semibold transition-colors hover:text-carnival-pink ${scrolled ? "text-carnival-navy/80" : "text-zinc-200 hover:text-white"}`}
             >
               {link.label}
             </a>
@@ -68,7 +68,7 @@ export default function Navbar() {
         </a>
 
         <button
-          className="rounded-full bg-white p-2 shadow-md md:hidden"
+          className={`rounded-full p-2 shadow-md md:hidden transition-colors ${scrolled ? "bg-white text-carnival-navy" : "bg-white/10 text-white backdrop-blur-md"}`}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >

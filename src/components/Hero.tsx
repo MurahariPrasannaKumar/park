@@ -11,7 +11,6 @@ import {
   MapPin,
   Tag,
   Star,
-  RefreshCcw,
 } from "lucide-react";
 
 type AnimationPhase = "start" | "ring" | "spin" | "explode" | "horizontal";
@@ -196,25 +195,6 @@ export default function Hero() {
       </AnimatePresence>
 
       <div className="relative z-10 flex h-full w-full max-w-7xl flex-col items-center justify-center px-6">
-        <div
-          className={`absolute top-8 right-8 z-50 transition-all duration-500 ${
-            isHorizontal
-              ? "opacity-100 pointer-events-auto translate-y-0"
-              : "opacity-0 pointer-events-none -translate-y-4"
-          }`}
-        >
-          <button
-            onClick={() => {
-              setPhase("start");
-              setTimeout(() => setPhase("horizontal"), 150);
-            }}
-            className="flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md hover:bg-white/20 ring-1 ring-white/10"
-          >
-            Replay Animation Sequence
-            <RefreshCcw className="h-4 w-4" />
-          </button>
-        </div>
-
         <motion.div
           animate={{
             opacity: isHorizontal ? 1 : 0,
