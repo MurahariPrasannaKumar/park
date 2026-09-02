@@ -1,27 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
 
 const ENTERTAINMENT = [
   {
     emoji: "🤹",
     name: "Street Performers",
     desc: "Jugglers, magicians & stilt walkers roam the park all day.",
+    image:
+      "https://images.unsplash.com/photo-1560253023-3ec5d502959f?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🎭",
     name: "Puppet Theatre",
     desc: "Live puppet shows with local folk tales every hour.",
+    image:
+      "https://images.unsplash.com/photo-1524650359799-842906ca1c06?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🎨",
     name: "Face Painting",
     desc: "Turn into your favourite animal or superhero in minutes.",
+    image:
+      "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🎶",
     name: "Live Band Stage",
     desc: "Toe-tapping music every evening on the main stage.",
+    image:
+      "https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
@@ -30,36 +39,48 @@ const FOOD = [
     emoji: "🍿",
     name: "Popcorn Palace",
     desc: "Buttery, caramel & spicy masala popcorn.",
+    image:
+      "https://images.unsplash.com/photo-1578849278619-e73505e9610f?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🍭",
     name: "Candy Corner",
     desc: "Cotton candy clouds in every colour of the rainbow.",
+    image:
+      "https://images.unsplash.com/photo-1611329857570-f02f340e7378?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🌭",
     name: "Kurnool Street Bites",
     desc: "Local favourites — mirchi bajji, punugulu & more.",
+    image:
+      "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🍦",
     name: "Ice Cream Igloo",
     desc: "Creamy scoops and soft-serve swirls to beat the heat.",
+    image:
+      "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🍕",
     name: "Pizza & Snacks",
     desc: "Cheesy slices and quick bites for hungry explorers.",
+    image:
+      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80",
   },
   {
     emoji: "🥤",
     name: "Juice & Mocktail Bar",
     desc: "Fresh fruit juices and fizzy mocktails.",
+    image:
+      "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=800&q=80",
   },
 ];
 
 // 1. Parent variant handles staggering both on entry and exit
-const gridVariants = {
+const gridVariants: Variants = {
   hidden: {
     transition: {
       staggerChildren: 0.05,
@@ -74,7 +95,7 @@ const gridVariants = {
 };
 
 // 2. Child variants with a slow, smooth transition for the 'hidden' state
-const scatterVariants = {
+const scatterVariants: Variants = {
   hidden: (index: number) => {
     const entryPoints = [
       { x: -800, y: -400, rotate: -35 }, // 0: Top-Left
@@ -95,7 +116,7 @@ const scatterVariants = {
       scale: 0.5,
       transition: {
         duration: 1.2, // SLOW EXIT: Makes them float away gently
-        ease: [0.25, 0.8, 0.25, 1], // Smooth deceleration
+        ease: [0.25, 0.8, 0.25, 1] as const, // Smooth deceleration
       },
     };
   },
@@ -114,7 +135,7 @@ const scatterVariants = {
   },
 };
 
-const headerVariants = {
+const headerVariants: Variants = {
   hidden: { opacity: 0, y: 24, transition: { duration: 0.8 } },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
@@ -122,7 +143,7 @@ const headerVariants = {
 export default function Stalls() {
   return (
     <section
-      className="relative bg-[#f9f8f6] py-24 overflow-hidden"
+      className="relative bg-[#F5F5F5] py-24 overflow-hidden"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         {/* Header Section */}
@@ -166,17 +187,28 @@ export default function Stalls() {
                 variants={scatterVariants}
                 whileHover={{ y: -6, scale: 1.02 }}
                 style={{ willChange: "transform, opacity" }}
-                className="flex h-[260px] w-full max-w-[280px] flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-slate-100 transition-colors hover:ring-orange-100"
+                className="group relative h-70 w-full max-w-70 overflow-hidden rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] ring-1 ring-black/5"
               >
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 text-2xl">
-                  {item.emoji}
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="280px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-black/5" />
+
+                <div className="relative flex h-full flex-col items-center justify-end p-6 text-center">
+                  <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl shadow-md backdrop-blur">
+                    {item.emoji}
+                  </span>
+                  <h4 className="font-display text-lg font-bold text-white">
+                    {item.name}
+                  </h4>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                    {item.desc}
+                  </p>
                 </div>
-                <h4 className="font-display text-lg font-bold text-slate-900">
-                  {item.name}
-                </h4>
-                <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-                  {item.desc}
-                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -202,17 +234,28 @@ export default function Stalls() {
                 variants={scatterVariants}
                 whileHover={{ y: -6, scale: 1.02 }}
                 style={{ willChange: "transform, opacity" }}
-                className="flex h-[260px] w-full max-w-[280px] flex-col items-center justify-center rounded-3xl bg-white p-6 text-center shadow-[0_8px_30px_rgb(0,0,0,0.06)] ring-1 ring-slate-100 transition-colors hover:ring-orange-100"
+                className="group relative h-70 w-full max-w-70 overflow-hidden rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] ring-1 ring-black/5"
               >
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 text-2xl">
-                  {item.emoji}
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  sizes="280px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-black/5" />
+
+                <div className="relative flex h-full flex-col items-center justify-end p-6 text-center">
+                  <span className="mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl shadow-md backdrop-blur">
+                    {item.emoji}
+                  </span>
+                  <h4 className="font-display text-lg font-bold text-white">
+                    {item.name}
+                  </h4>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                    {item.desc}
+                  </p>
                 </div>
-                <h4 className="font-display text-lg font-bold text-slate-900">
-                  {item.name}
-                </h4>
-                <p className="mt-2 text-sm text-slate-500 leading-relaxed">
-                  {item.desc}
-                </p>
               </motion.div>
             ))}
           </motion.div>
@@ -221,3 +264,4 @@ export default function Stalls() {
     </section>
   );
 }
+

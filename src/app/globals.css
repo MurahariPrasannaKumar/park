@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9f8f6;
+  --background: #F5F5F5;
   --foreground: #1e293b;
 
   --color-carnival-pink: #ff5d8f;
@@ -96,3 +96,4 @@ body {
   background-image: radial-gradient(rgba(20, 33, 61, 0.06) 1px, transparent 1px);
   background-size: 22px 22px;
 }
+

@@ -16,18 +16,18 @@ export default function Loader() {
     if (!visible) {
       document.body.style.overflow = "";
     }
-  }, [visible]);
-
+  }, [visible]); 
+ 
   return (
     <AnimatePresence>
       {visible && (
         <div className="fixed inset-0 z-[999] overflow-hidden" aria-hidden="true">
           {/* top half — white bg, black text */}
-          <motion.div
+          l <motion.div
             initial={{ y: 0 }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
-            className="absolute inset-x-0 top-0 flex h-1/2 items-end justify-center overflow-hidden bg-white"
+            className="absolute inset-x-0 top-0 flex h-1/2 items-end justify-center overflow-hidden bg-[#F5F5F5]"
           >
             <motion.span
               initial={{ opacity: 0, y: "-100%" }}
@@ -68,3 +68,4 @@ export default function Loader() {
     </AnimatePresence>
   );
 }
+

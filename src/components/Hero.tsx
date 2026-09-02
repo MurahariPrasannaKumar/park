@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import type { Transition } from "framer-motion";
 import {
   PlayCircle,
   Sparkles,
@@ -145,7 +146,7 @@ export default function Hero() {
   else if (phase === "explode") wrapperRotation = 360;
 
   // Mixed Easing Configurations
-  const getSmoothTransition = (currentPhase: AnimationPhase) => {
+  const getSmoothTransition = (currentPhase: AnimationPhase): Transition => {
     if (currentPhase === "ring") {
       return { type: "tween", ease: [0.16, 1, 0.3, 1], duration: 1.8 };
     }
@@ -255,7 +256,7 @@ export default function Hero() {
           transition={{
             rotate: isHorizontal
               ? { duration: 0 }
-              : (getSmoothTransition(phase) as any),
+              : getSmoothTransition(phase),
             layout: { type: "spring", bounce: 0.15, duration: 0.8 },
           }}
           style={{ willChange: "transform" }}
@@ -315,7 +316,7 @@ export default function Hero() {
                   opacity: currentOpacity,
                   zIndex: isHorizontal && isActive ? 40 : 30,
                 }}
-                transition={getSmoothTransition(phase) as any}
+                transition={getSmoothTransition(phase)}
                 style={{ willChange: "transform, opacity" }}
                 onMouseEnter={() => {
                   if (isHorizontal) {

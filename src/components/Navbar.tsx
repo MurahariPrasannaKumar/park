@@ -31,7 +31,7 @@ export default function Navbar() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[#f9f8f6]/80 backdrop-blur-md shadow-[0_4px_30px_rgba(20,33,61,0.08)]"
+          ? "bg-[#F5F5F5]/80 backdrop-blur-md shadow-[0_4px_30px_rgba(20,33,61,0.08)]"
           : "bg-transparent"
       }`}
     >
@@ -68,7 +68,7 @@ export default function Navbar() {
         </a>
 
         <button
-          className={`rounded-full p-2 shadow-md md:hidden transition-colors ${scrolled ? "bg-[#f9f8f6] text-carnival-navy" : "bg-white/10 text-white backdrop-blur-md"}`}
+          className={`rounded-full p-2 shadow-md md:hidden transition-colors ${scrolled ? "bg-[#F5F5F5] text-carnival-navy" : "bg-white/10 text-white backdrop-blur-md"}`}
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -81,7 +81,7 @@ export default function Navbar() {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
-          className="flex flex-col gap-1 bg-[#f9f8f6] px-5 pb-5 shadow-lg md:hidden"
+          className="flex flex-col gap-1 bg-[#F5F5F5] px-5 pb-5 shadow-lg md:hidden"
         >
           {LINKS.map((link) => (
             <a
@@ -105,3 +105,4 @@ export default function Navbar() {
     </motion.header>
   );
 }
+

@@ -50,7 +50,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-24 sm:py-32">
+    <section id="about" className="relative overflow-hidden bg-[#F5F5F5] py-24 sm:py-32">
       {/* Subtle Background Glow typical in SaaS landing pages */}
       <div className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-teal-100/30 blur-[100px]" />
       <div className="pointer-events-none absolute -right-40 top-0 h-96 w-96 rounded-full bg-violet-100/30 blur-[100px]" />
@@ -90,7 +90,7 @@ export default function About() {
 
               {/* Floating Badge Overlay over the carousel */}
               <div className="pointer-events-none absolute bottom-8 left-0 right-0 z-20 flex justify-center">
-                <div className="flex items-center gap-3 rounded-2xl border border-white/40 bg-white/70 px-6 py-3 shadow-lg backdrop-blur-md">
+                <div className="flex items-center gap-3 rounded-2xl border border-white/40 bg-[#F5F5F5]/70 px-6 py-3 shadow-lg backdrop-blur-md">
                   <span className="text-xl">🎪</span>
                   <div className="flex flex-col">
                     <span className="text-sm font-bold text-slate-900">Since 1998</span>
@@ -104,7 +104,7 @@ export default function About() {
                 {CAROUSEL_IMAGES.map((_, idx) => (
                   <div
                     key={idx}
-                    className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentImageIndex ? "w-4 bg-white" : "w-1.5 bg-white/50"
+                    className={`h-1.5 rounded-full transition-all duration-500 ${idx === currentImageIndex ? "w-4 bg-[#F5F5F5]" : "w-1.5 bg-[#F5F5F5]/50"
                       }`}
                   />
                 ))}
@@ -152,7 +152,7 @@ export default function About() {
                   <div className="relative h-full w-full rounded-2xl shadow-sm transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
 
                     {/* FRONT FACE */}
-                    <div className="absolute inset-0 flex h-full w-full flex-col items-center rounded-2xl border border-slate-100 bg-white p-6 text-center [backface-visibility:hidden] hover:shadow-md hover:ring-1 hover:ring-slate-200">
+                    <div className="absolute inset-0 flex h-full w-full flex-col items-center rounded-2xl border border-amber-100 bg-[#F5F5F5] p-6 text-center [backface-visibility:hidden] hover:shadow-md hover:ring-1 hover:ring-amber-200">
                       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-50 ring-1 ring-slate-100 transition-colors duration-300 group-hover:bg-violet-50 group-hover:ring-violet-100/50">
                         <span className="text-2xl">{h.emoji}</span>
                       </div>
@@ -188,3 +188,4 @@ export default function About() {
     </section>
   );
 }
+

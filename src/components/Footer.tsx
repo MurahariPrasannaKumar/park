@@ -1,201 +1,149 @@
-import {
-  Mail,
-  Share2,
-  MessageSquare,
-  Send,
-  Hexagon,
-  ArrowRight,
-} from "lucide-react";
+import { Clock, Mail, MapPin, Phone, Send, Ticket } from "lucide-react";
 
-const FOOTER_LINKS = {
-  Product: [
-    { label: "Features", href: "#" },
-    { label: "Integrations", href: "#" },
-    { label: "Pricing", href: "#" },
-    { label: "Changelog", href: "#" },
-  ],
-  Resources: [
-    { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
-    { label: "Community", href: "#" },
-    { label: "Blog", href: "#" },
-  ],
-  Company: [
-    { label: "About Us", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Partners", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
-  Legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-    { label: "Cookie Policy", href: "#" },
-    { label: "Security", href: "#" },
-  ],
-};
+const FOOTER_LINKS = [
+  {
+    title: "Explore",
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Rides", href: "#rides" },
+      { label: "Food & Fun", href: "#stalls" },
+      { label: "Gallery", href: "#gallery" },
+    ],
+  },
+  {
+    title: "Plan",
+    links: [
+      { label: "Offers", href: "#offers" },
+      { label: "Visit Info", href: "#visit" },
+      { label: "FAQs", href: "#faq" },
+      { label: "Book Tickets", href: "#visit" },
+    ],
+  },
+];
 
-const SOCIALS = [
-  { label: "Email", icon: Mail, href: "#" },
-  { label: "Share", icon: Share2, href: "#" },
-  { label: "Chat", icon: MessageSquare, href: "#" },
+const CONTACT_LINKS = [
+  {
+    label: "+91 98765 43210",
+    href: "tel:+919876543210",
+    icon: Phone,
+  },
+  {
+    label: "hello@childrensparkkurnool.in",
+    href: "mailto:hello@childrensparkkurnool.in",
+    icon: Mail,
+  },
+  {
+    label: "Children's Park, Kurnool",
+    href: "https://maps.google.com/?q=Children's%20Park%20Kurnool",
+    icon: MapPin,
+  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-slate-800 bg-slate-950 text-slate-300">
-      {/* Subtle Background Glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[400px] w-[1000px] -translate-x-1/2 opacity-20"
-        aria-hidden="true"
-      >
-        <div className="absolute inset-0 rounded-full bg-gradient-to-b from-indigo-500/40 to-transparent blur-3xl" />
-      </div>
+    <footer className="relative overflow-hidden border-t border-white/10 bg-black text-slate-200">
+      <div className="h-1 bg-gradient-to-r from-carnival-pink via-carnival-yellow to-carnival-teal" />
 
-      <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-16 sm:pt-24 lg:px-8">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-          {/* Brand & Newsletter Section */}
-          <div className="space-y-8 xl:col-span-1">
-            <div className="flex items-center gap-2.5">
-              <Hexagon className="h-7 w-7 fill-indigo-500/20 text-indigo-500" />
-              <span className="text-xl font-bold tracking-tight text-white">
-                Nexus
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr_1.15fr]">
+          <div>
+            <a href="#top" className="inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-carnival-pink via-carnival-orange to-carnival-yellow text-white shadow-[0_10px_28px_rgba(255,93,143,0.35)]">
+                <Ticket className="h-6 w-6" />
               </span>
-            </div>
+              <span className="font-display text-2xl font-extrabold leading-none text-white">
+                Children&apos;s Park
+                <span className="mt-1 block text-xs font-bold uppercase tracking-widest text-carnival-yellow">
+                  Kurnool, Andhra Pradesh
+                </span>
+              </span>
+            </a>
 
-            <p className="text-sm leading-6 text-slate-400">
-              Accelerate your development workflow. Build better, ship faster,
-              and scale infinitely with our next-generation platform.
+            <p className="mt-6 max-w-md text-sm leading-6 text-slate-300">
+              Family rides, cheerful food stalls, birthday specials, and
+              all-day carnival energy in the heart of Kurnool.
             </p>
 
-            <form className="relative max-w-sm">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                required
-                className="w-full rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-2.5 text-sm text-white placeholder-slate-500 outline-none ring-indigo-500 transition-all focus:border-indigo-500 focus:bg-slate-900 focus:ring-1"
-                placeholder="Subscribe to our newsletter"
-              />
-              <button
-                type="submit"
-                className="absolute bottom-1 right-1 top-1 flex items-center justify-center rounded-md bg-indigo-600 px-3 text-white transition-colors hover:bg-indigo-500"
-                aria-label="Subscribe"
-              >
-                <Send className="h-4 w-4" />
-              </button>
-            </form>
+            <a
+              href="#visit"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-carnival-pink px-6 py-3 font-display text-sm font-bold text-white shadow-[0_10px_25px_rgba(255,93,143,0.4)] transition-all hover:-translate-y-0.5 hover:bg-carnival-red"
+            >
+              <Ticket className="h-4 w-4" />
+              Book Tickets
+            </a>
           </div>
 
-          {/* Links Grid */}
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold text-white">Product</h3>
-                <ul className="mt-6 space-y-4">
-                  {FOOTER_LINKS.Product.map((item) => (
-                    <li key={item.label}>
+          <div className="grid grid-cols-2 gap-8">
+            {FOOTER_LINKS.map((group) => (
+              <div key={group.title}>
+                <h2 className="font-display text-sm font-bold uppercase tracking-widest text-carnival-yellow">
+                  {group.title}
+                </h2>
+                <ul className="mt-5 space-y-3">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
                       <a
-                        href={item.href}
-                        className="text-sm leading-6 transition-colors hover:text-white"
+                        href={link.href}
+                        className="text-sm text-slate-300 transition-colors hover:text-carnival-pink"
                       >
-                        {item.label}
+                        {link.label}
                       </a>
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold text-white">Resources</h3>
-                <ul className="mt-6 space-y-4">
-                  {FOOTER_LINKS.Resources.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 transition-colors hover:text-white"
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+            ))}
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+            <h2 className="font-display text-sm font-bold uppercase tracking-widest text-carnival-teal">
+              Visit Details
+            </h2>
+
+            <div className="mt-5 flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-carnival-blue/15 text-carnival-blue">
+                <Clock className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-display font-bold text-white">
+                  Tue - Sun, 10:00 AM - 9:00 PM
+                </p>
+                <p className="text-sm text-slate-400">Closed on Mondays</p>
               </div>
             </div>
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold text-white">Company</h3>
-                <ul className="mt-6 space-y-4">
-                  {FOOTER_LINKS.Company.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 transition-colors hover:text-white"
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold text-white">Legal</h3>
-                <ul className="mt-6 space-y-4">
-                  {FOOTER_LINKS.Legal.map((item) => (
-                    <li key={item.label}>
-                      <a
-                        href={item.href}
-                        className="text-sm leading-6 transition-colors hover:text-white"
-                      >
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+
+            <ul className="mt-5 space-y-3">
+              {CONTACT_LINKS.map((item) => {
+                const Icon = item.icon;
+
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-carnival-yellow"
+                    >
+                      <Icon className="h-4 w-4 shrink-0 text-carnival-pink" />
+                      <span>{item.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 border-t border-slate-800/80 pt-8 md:flex-row md:items-center">
-          {/* Status Indicator */}
-          <a
-            href="#"
-            className="group flex items-center gap-2 text-xs text-slate-400 transition-colors hover:text-slate-300"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-            </span>
-            All systems operational
-            <ArrowRight className="h-3 w-3 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
-          </a>
-
-          {/* Socials */}
-          <div className="flex items-center gap-5">
-            {SOCIALS.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="text-slate-500 transition-colors hover:text-white"
-                  aria-label={social.label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              );
-            })}
-          </div>
-
-          {/* Copyright */}
-          <p className="text-xs leading-5 text-slate-500">
-            &copy; {new Date().getFullYear()} Nexus Technologies, Inc. All
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} Children&apos;s Park Kurnool. All
             rights reserved.
           </p>
+          <a
+            href="mailto:hello@childrensparkkurnool.in"
+            className="inline-flex items-center gap-2 font-display font-bold text-carnival-yellow transition-colors hover:text-carnival-pink"
+          >
+            <Send className="h-4 w-4" />
+            Plan a group visit
+          </a>
         </div>
       </div>
     </footer>

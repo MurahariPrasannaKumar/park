@@ -21,14 +21,14 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
-      className="relative overflow-hidden bg-slate-950 py-24"
+      className="relative overflow-hidden bg-[#F5F5F5] py-24"
     >
       {/* Header */}
       <div className="mx-auto mb-12 max-w-7xl px-5 text-center sm:px-8">
         <span className="font-display text-sm font-bold uppercase tracking-widest text-yellow-400">
           Moments &amp; Memories
         </span>
-        <h2 className="mt-3 font-display text-4xl font-extrabold text-white sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-extrabold text-carnival-navy sm:text-5xl">
           A Little Taste of the Fun
         </h2>
       </div>
@@ -36,8 +36,8 @@ export default function Gallery() {
       {/* Marquee Container */}
       <div className="relative flex items-center overflow-hidden">
         {/* Gradient fades for the edges to make the marquee fade in and out smoothly */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-slate-950 to-transparent sm:w-48" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-slate-950 to-transparent sm:w-48" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#F5F5F5] to-transparent sm:w-48" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#F5F5F5] to-transparent sm:w-48" />
 
         {/* Framer Motion container for reliable, perfectly smooth infinite scrolling */}
         <motion.div
@@ -71,3 +71,4 @@ export default function Gallery() {
     </section>
   );
 }
+

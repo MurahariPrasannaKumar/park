@@ -31,7 +31,7 @@ export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="relative bg-[#f9f8f6] py-24">
+    <section id="faq" className="relative bg-[#F5F5F5] py-24">
       <div className="mx-auto max-w-3xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -58,20 +58,34 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.4, delay: i * 0.05 }}
-                className="overflow-hidden rounded-2xl bg-white ring-1 ring-slate-100 shadow-[0_4px_15px_rgba(20,33,61,0.06)]"
+                className={`group overflow-hidden rounded-2xl border bg-white transition-all duration-300 ${
+                  isOpen
+                    ? "border-carnival-pink/40 shadow-[0_8px_24px_rgba(20,33,61,0.10)]"
+                    : "border-slate-200 shadow-[0_2px_8px_rgba(20,33,61,0.04)] hover:border-carnival-pink/30 hover:shadow-[0_6px_18px_rgba(20,33,61,0.08)]"
+                }`}
               >
                 <button
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                  className="flex w-full cursor-pointer items-center justify-between gap-4 px-6 py-5 text-left transition-colors duration-200 hover:bg-carnival-pink/5"
                 >
-                  <span className="font-display font-bold text-carnival-navy">
+                  <span
+                    className={`font-display font-bold transition-colors duration-200 ${
+                      isOpen ? "text-carnival-pink" : "text-carnival-navy group-hover:text-carnival-pink"
+                    }`}
+                  >
                     {item.q}
                   </span>
-                  <ChevronDown
-                    className={`h-5 w-5 shrink-0 text-carnival-pink transition-transform duration-300 ${
-                      isOpen ? "rotate-180" : ""
+                  <span
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+                      isOpen ? "bg-carnival-pink text-white" : "bg-slate-100 text-carnival-pink group-hover:bg-carnival-pink/15"
                     }`}
-                  />
+                  >
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </span>
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
@@ -82,7 +96,7 @@ export default function FAQ() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="px-6 pb-5 text-sm leading-relaxed text-slate-600">
+                      <p className="border-t border-slate-100 px-6 pb-5 pt-4 text-sm leading-relaxed text-slate-600">
                         {item.a}
                       </p>
                     </motion.div>
@@ -96,3 +110,4 @@ export default function FAQ() {
     </section>
   );
 }
+

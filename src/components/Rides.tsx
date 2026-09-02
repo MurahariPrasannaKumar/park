@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -143,18 +144,18 @@ export default function IconicRides() {
   const currentRides = RIDES_DATA[activeCategory] || [];
 
   return (
-    <section className="relative flex min-h-[800px] w-full flex-col overflow-hidden bg-[#f9f8f6] lg:flex-row">
+    <section className="relative flex w-full flex-col overflow-hidden bg-black py-16 sm:py-20 lg:min-h-[820px] lg:flex-row lg:py-0">
       {/* 
         =========================================
         LEFT SIDEBAR: CATEGORY NAVIGATION
         =========================================
       */}
-      <div className="relative flex w-full flex-col justify-center px-6 pt-12 lg:w-[320px] xl:w-[400px] lg:shrink-0 lg:px-0 lg:pt-0">
+      <div className="relative flex w-full flex-col justify-center px-5 sm:px-8 lg:w-[360px] lg:shrink-0 lg:px-0 xl:w-[440px]">
         {/* Desktop Arc Visual - Shifted slightly left to create the gap */}
-        <div className="pointer-events-none absolute left-0 top-1/2 hidden h-[600px] w-[600px] -translate-x-[55%] -translate-y-1/2 rounded-full border-[30px] border-zinc-100 lg:block xl:h-[800px] xl:w-[800px] xl:border-[40px]" />
+        <div className="pointer-events-none absolute left-0 top-1/2 hidden h-[600px] w-[600px] -translate-x-[55%] -translate-y-1/2 rounded-full border-[30px] border-white/10 lg:block xl:h-[800px] xl:w-[800px] xl:border-[40px]" />
 
         {/* Mobile Navigation (Horizontal Scroll) */}
-        <div className="no-scrollbar flex gap-3 overflow-x-auto pb-6 sm:gap-4 lg:hidden">
+        <div className="no-scrollbar flex gap-3 overflow-x-auto pb-10 sm:gap-4 lg:hidden">
           {CATEGORIES.map((cat) => {
             const Icon = cat.icon;
             const isActive = activeCategory === cat.id;
@@ -164,8 +165,8 @@ export default function IconicRides() {
                 onClick={() => setActiveCategory(cat.id)}
                 className={`relative flex shrink-0 items-center gap-2.5 rounded-full border px-4 py-2.5 sm:px-5 sm:py-3 transition-all ${
                   isActive
-                    ? "border-zinc-900 bg-zinc-900 text-white"
-                    : "border-zinc-200 bg-white text-zinc-500 hover:border-zinc-300 hover:bg-zinc-100"
+                    ? "border-[#F5F5F5] bg-[#F5F5F5] text-zinc-950"
+                    : "border-white/15 bg-white/10 text-zinc-300 hover:border-white/30 hover:bg-white/15"
                 }`}
               >
                 <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -192,7 +193,7 @@ export default function IconicRides() {
         </div>
 
         {/* Desktop Navigation (Arc Alignment with visual gap) */}
-        <div className="relative z-10 hidden flex-col gap-10 pl-6 xl:pl-12 lg:flex">
+        <div className="relative z-10 hidden flex-col gap-12 pl-8 lg:flex xl:gap-14 xl:pl-14">
           {CATEGORIES.map((cat, index) => {
             const Icon = cat.icon;
             const isActive = activeCategory === cat.id;
@@ -206,14 +207,14 @@ export default function IconicRides() {
             return (
               <div
                 key={cat.id}
-                className={`flex items-center gap-5 xl:gap-6 transition-transform duration-500 ${translateX}`}
+                className={`flex items-center gap-6 transition-transform duration-500 xl:gap-7 ${translateX}`}
               >
                 <button
                   onClick={() => setActiveCategory(cat.id)}
                   className={`relative flex h-16 w-16 xl:h-20 xl:w-20 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
                     isActive
-                      ? "bg-zinc-900 text-white shadow-xl shadow-zinc-200"
-                      : "border border-zinc-200 bg-white text-zinc-400 hover:border-zinc-300 hover:bg-zinc-100"
+                      ? "bg-[#F5F5F5] text-zinc-950 shadow-xl shadow-white/10"
+                      : "border border-white/15 bg-white/10 text-zinc-400 hover:border-white/30 hover:bg-white/15"
                   }`}
                 >
                   <Icon
@@ -235,7 +236,7 @@ export default function IconicRides() {
                           r="47"
                           strokeWidth="2"
                           fill="none"
-                          className="stroke-zinc-200"
+                          className="stroke-white/20"
                         />
                         {/* Progress Fill */}
                         <motion.circle
@@ -246,7 +247,7 @@ export default function IconicRides() {
                           strokeWidth="2"
                           fill="none"
                           strokeLinecap="round"
-                          className="stroke-zinc-900"
+                          className="stroke-white"
                           initial={{ pathLength: 0 }}
                           animate={{ pathLength: 1 }}
                           transition={{
@@ -266,13 +267,13 @@ export default function IconicRides() {
                   <span
                     className={`text-base xl:text-lg font-bold transition-colors ${
                       isActive
-                        ? "text-zinc-900"
-                        : "text-zinc-500 group-hover:text-zinc-700"
+                        ? "text-white"
+                        : "text-zinc-400 group-hover:text-zinc-200"
                     }`}
                   >
                     {cat.label}
                   </span>
-                  <span className="mt-1 inline-flex w-fit items-center rounded-full bg-zinc-200/60 px-2.5 py-0.5 text-[10px] xl:text-xs font-semibold text-zinc-600">
+                  <span className="mt-1 inline-flex w-fit items-center rounded-full bg-white/10 px-2.5 py-0.5 text-[10px] xl:text-xs font-semibold text-zinc-300">
                     {cat.count}
                   </span>
                 </div>
@@ -287,14 +288,14 @@ export default function IconicRides() {
         RIGHT SIDE: CAROUSEL CONTENT
         =========================================
       */}
-      <div className="relative flex w-full flex-col pb-12 pt-6 pl-6 sm:pl-8 lg:py-24 lg:pl-10 xl:pl-16">
+      <div className="relative flex w-full min-w-0 flex-col px-5 sm:px-8 lg:py-24 lg:pl-12 lg:pr-10 xl:pl-16 xl:pr-20">
         {/* Header & Controls */}
-        <div className="mb-8 mr-6 flex items-end justify-between sm:mb-10 lg:mr-16">
+        <div className="mb-10 flex flex-col gap-6 sm:mb-12 md:flex-row md:items-end md:justify-between lg:mb-14">
           <div className="max-w-xl">
-            <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
               Iconic Rides
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-zinc-500 sm:mt-4">
+            <p className="mt-4 max-w-lg text-sm leading-6 text-zinc-400 sm:text-base">
               Discover our world-class attractions, engineered for unforgettable
               memories.
             </p>
@@ -302,14 +303,14 @@ export default function IconicRides() {
           <div className="hidden items-center gap-2 sm:gap-3 md:flex">
             <button
               onClick={() => scroll("left")}
-              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-600 transition-colors hover:border-zinc-300 hover:bg-zinc-100 hover:text-zinc-900"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/15 bg-white/10 text-zinc-200 transition-colors hover:border-white/30 hover:bg-white/15 hover:text-white"
               aria-label="Previous ride"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={() => scroll("right")}
-              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-zinc-900 text-white shadow-md transition-colors hover:bg-zinc-800"
+              className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#F5F5F5] text-zinc-950 shadow-md transition-colors hover:bg-yellow-100"
               aria-label="Next ride"
             >
               <ChevronRight className="h-5 w-5" />
@@ -318,10 +319,10 @@ export default function IconicRides() {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative w-full overflow-hidden">
+        <div className="relative w-full min-w-0 overflow-hidden">
           <div
             ref={carouselRef}
-            className="no-scrollbar flex w-full snap-x snap-mandatory gap-4 sm:gap-6 overflow-x-auto pb-8 pr-6 lg:pr-16"
+            className="no-scrollbar flex w-full snap-x snap-mandatory gap-5 overflow-x-auto pb-10 sm:gap-6 lg:gap-8"
           >
             <AnimatePresence mode="popLayout">
               {currentRides.map((ride, index) => (
@@ -332,30 +333,32 @@ export default function IconicRides() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group relative h-[380px] w-[260px] sm:h-[480px] sm:w-[320px] shrink-0 snap-start overflow-hidden rounded-[2rem] bg-zinc-200 shadow-sm"
+                  className="group relative h-[400px] w-[min(82vw,300px)] shrink-0 snap-start overflow-hidden rounded-[2rem] bg-zinc-200 shadow-sm sm:h-[470px] sm:w-[320px] lg:h-[480px] xl:w-[340px]"
                 >
-                  <img
+                  <Image
                     src={ride.image}
                     alt={ride.name}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="(max-width: 640px) 82vw, (max-width: 1280px) 320px, 340px"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
 
                   {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/40 to-transparent transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/55 to-transparent transition-opacity duration-300" />
 
                   {/* Card Content */}
-                  <div className="absolute bottom-0 flex w-full flex-col p-6 sm:p-8">
-                    <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-zinc-300">
+                  <div className="absolute bottom-0 flex w-full flex-col px-6 pb-7 pt-16 sm:px-8 sm:pb-8">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-zinc-300 sm:text-xs">
                       {ride.location}
                     </span>
-                    <h3 className="mt-1.5 sm:mt-2 text-xl sm:text-2xl font-bold leading-tight text-white">
+                    <h3 className="mt-2 text-xl font-bold leading-tight text-white sm:text-2xl">
                       {ride.name}
                     </h3>
-                    <p className="line-clamp-3 mt-2 sm:mt-3 text-xs sm:text-sm leading-relaxed text-zinc-400">
+                    <p className="mt-3 line-clamp-3 text-xs leading-relaxed text-zinc-300 sm:text-sm">
                       {ride.desc}
                     </p>
 
-                    <button className="mt-4 sm:mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold text-zinc-900 transition-colors hover:bg-zinc-200">
+                    <button className="mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#F5F5F5] px-4 py-2 text-xs font-semibold text-zinc-900 transition-colors hover:bg-yellow-100 sm:px-5 sm:py-2.5 sm:text-sm">
                       Ride Details
                       <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
                     </button>
@@ -367,8 +370,8 @@ export default function IconicRides() {
         </div>
 
         {/* Bottom Call to Action */}
-        <div className="mt-2 sm:mt-6 pr-6 lg:pr-16">
-          <button className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-zinc-900 underline decoration-zinc-300 decoration-2 underline-offset-4 transition-colors hover:decoration-zinc-900">
+        <div className="mt-2 sm:mt-4">
+          <button className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-white underline decoration-white/30 decoration-2 underline-offset-4 transition-colors hover:decoration-white">
             Explore All Attractions
             <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4" />
           </button>
@@ -377,3 +380,4 @@ export default function IconicRides() {
     </section>
   );
 }
+

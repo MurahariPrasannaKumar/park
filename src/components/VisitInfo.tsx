@@ -28,7 +28,7 @@ const INFO = [
 
 export default function VisitInfo() {
   return (
-    <section id="visit" className="relative bg-[#f9f8f6] py-24">
+    <section id="visit" className="relative bg-black py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:items-center">
           <motion.div
@@ -40,10 +40,10 @@ export default function VisitInfo() {
             <span className="font-display text-sm font-bold uppercase tracking-widest text-carnival-blue">
               Plan Your Visit
             </span>
-            <h2 className="mt-3 font-display text-4xl font-extrabold text-carnival-navy sm:text-5xl">
+            <h2 className="mt-3 font-display text-4xl font-extrabold text-white sm:text-5xl">
               Your Carnival Adventure Awaits
             </h2>
-            <p className="mt-4 max-w-lg text-lg text-slate-600">
+            <p className="mt-4 max-w-lg text-lg text-slate-300">
               Nestled in the heart of Kurnool, Children&apos;s Park is easy to
               reach and perfect for a full day of family fun. Grab your
               tickets online and skip the queue!
@@ -97,7 +97,7 @@ export default function VisitInfo() {
               <p className="font-semibold text-slate-500">
                 Kurnool, Andhra Pradesh — 518001
               </p>
-              <span className="mt-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold text-carnival-blue shadow-sm">
+              <span className="mt-2 rounded-full bg-[#F5F5F5] px-4 py-1.5 text-xs font-bold text-carnival-blue shadow-sm">
                 Easy parking &amp; auto/cab access
               </span>
             </div>
@@ -107,3 +107,4 @@ export default function VisitInfo() {
     </section>
   );
 }
+
