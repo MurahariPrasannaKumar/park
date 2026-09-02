@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Gift, PartyPopper, Users } from "lucide-react";
+import { ArrowRight, Gift, PartyPopper, Sparkles, Ticket, Users } from "lucide-react";
 
 const OFFERS = [
   {
@@ -29,7 +29,7 @@ const OFFERS = [
 
 export default function Offers() {
   return (
-    <section id="offers" className="relative bg-gradient-to-b from-white to-carnival-pink/5 py-24">
+    <section id="offers" className="relative bg-black py-20 sm:py-24 lg:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -41,47 +41,87 @@ export default function Offers() {
           <span className="font-display text-sm font-bold uppercase tracking-widest text-carnival-red">
             Special Offers
           </span>
-          <h2 className="mt-3 font-display text-4xl font-extrabold text-carnival-navy sm:text-5xl">
+          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight text-white sm:text-5xl">
             More Fun, Less Spend
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-5 text-base leading-7 text-slate-300 sm:text-lg">
             Make your visit even sweeter with our seasonal deals and
             celebration packages.
           </p>
         </motion.div>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {OFFERS.map((offer, i) => (
-            <motion.div
-              key={offer.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="relative overflow-hidden rounded-3xl bg-white p-8 shadow-[0_10px_25px_rgba(20,33,61,0.08)] ring-1 ring-slate-100"
-            >
-              <div
-                className={`absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br ${offer.color} opacity-20 blur-2xl`}
-              />
-              <div
-                className={`relative inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${offer.color} text-white shadow-md`}
-              >
-                <offer.icon className="h-6 w-6" />
-              </div>
-              <span className="relative mt-5 block font-display text-xs font-bold uppercase tracking-wider text-carnival-pink">
-                {offer.tag}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="relative mt-12 overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-carnival-navy via-[#1b2a52] to-carnival-navy shadow-[0_25px_60px_rgba(0,0,0,0.45)] ring-1 ring-white/10 sm:mt-14"
+        >
+          {/* Decorative glows */}
+          <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-carnival-pink/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-20 -right-10 h-72 w-72 rounded-full bg-carnival-blue/25 blur-3xl" />
+          <div className="pointer-events-none absolute right-1/4 top-1/3 h-40 w-40 rounded-full bg-carnival-yellow/10 blur-3xl" />
+
+          <div className="relative grid grid-cols-1 gap-10 p-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-0 lg:p-0">
+            {/* Left: Poster headline panel */}
+            <div className="relative flex flex-col justify-center border-white/10 px-1 py-2 lg:border-r lg:px-12 lg:py-14">
+              <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 font-display text-xs font-bold uppercase tracking-widest text-carnival-yellow ring-1 ring-white/10">
+                <Sparkles className="h-3.5 w-3.5" />
+                Limited Time
               </span>
-              <h3 className="relative mt-2 font-display text-xl font-bold text-carnival-navy">
-                {offer.title}
+              <h3 className="mt-5 font-display text-3xl font-extrabold leading-[1.1] text-white sm:text-4xl">
+                Grab an Offer,
+                <br />
+                Make it a Day.
               </h3>
-              <p className="relative mt-3 text-sm leading-relaxed text-slate-600">
-                {offer.desc}
+              <p className="mt-4 max-w-sm text-sm leading-7 text-slate-300">
+                Three easy ways to save on your next visit — pick the one that
+                fits your crew.
               </p>
-            </motion.div>
-          ))}
-        </div>
+              <a
+                href="#visit"
+                className="group mt-8 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 font-display text-sm font-bold text-carnival-navy shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
+              >
+                <Ticket className="h-4 w-4" />
+                Claim Your Offer
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+
+            {/* Right: Offer list */}
+            <div className="relative divide-y divide-white/10 px-8 py-6 sm:px-10 lg:px-12 lg:py-6">
+              {OFFERS.map((offer, i) => (
+                <motion.div
+                  key={offer.title}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group flex items-start gap-5 py-6 first:pt-2 last:pb-2"
+                >
+                  <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${offer.color} text-white shadow-md transition-transform duration-300 group-hover:scale-110`}
+                  >
+                    <offer.icon className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="font-display text-xs font-bold uppercase tracking-wider text-carnival-yellow">
+                      {offer.tag}
+                    </span>
+                    <h4 className="mt-1 font-display text-lg font-bold leading-snug text-white">
+                      {offer.title}
+                    </h4>
+                    <p className="mt-2 text-sm leading-6 text-slate-300">
+                      {offer.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+

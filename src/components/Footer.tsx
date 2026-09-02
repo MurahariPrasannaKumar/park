@@ -1,85 +1,150 @@
-const SOCIALS = [
-  { label: "Facebook", emoji: "📘" },
-  { label: "Instagram", emoji: "📸" },
-  { label: "YouTube", emoji: "▶️" },
+import { Clock, Mail, MapPin, Phone, Send, Ticket } from "lucide-react";
+
+const FOOTER_LINKS = [
+  {
+    title: "Explore",
+    links: [
+      { label: "About", href: "#about" },
+      { label: "Rides", href: "#rides" },
+      { label: "Food & Fun", href: "#stalls" },
+      { label: "Gallery", href: "#gallery" },
+    ],
+  },
+  {
+    title: "Plan",
+    links: [
+      { label: "Offers", href: "#offers" },
+      { label: "Visit Info", href: "#visit" },
+      { label: "FAQs", href: "#faq" },
+      { label: "Book Tickets", href: "#visit" },
+    ],
+  },
+];
+
+const CONTACT_LINKS = [
+  {
+    label: "+91 98765 43210",
+    href: "tel:+919876543210",
+    icon: Phone,
+  },
+  {
+    label: "hello@childrensparkkurnool.in",
+    href: "mailto:hello@childrensparkkurnool.in",
+    icon: Mail,
+  },
+  {
+    label: "Children's Park, Kurnool",
+    href: "https://maps.google.com/?q=Children's%20Park%20Kurnool",
+    icon: MapPin,
+  },
 ];
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-carnival-navy pt-16 text-white">
-      <svg
-        viewBox="0 0 1440 60"
-        className="absolute -top-1 left-0 w-full text-white"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M0 40 C 240 0 480 0 720 30 C 960 60 1200 60 1440 20 L1440 60 L0 60 Z"
-          fill="currentColor"
-        />
-      </svg>
+    <footer className="relative overflow-hidden border-t border-white/10 bg-black text-slate-200">
+      <div className="h-1 bg-gradient-to-r from-carnival-pink via-carnival-yellow to-carnival-teal" />
 
-      <div className="mx-auto max-w-7xl px-5 pb-10 sm:px-8">
-        <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-16">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_1fr_1.15fr]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-carnival-pink via-carnival-orange to-carnival-yellow text-lg">
-                🎡
+            <a href="#top" className="inline-flex items-center gap-3">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-carnival-pink via-carnival-orange to-carnival-yellow text-white shadow-[0_10px_28px_rgba(255,93,143,0.35)]">
+                <Ticket className="h-6 w-6" />
               </span>
-              <span className="font-display text-xl font-bold">
+              <span className="font-display text-2xl font-extrabold leading-none text-white">
                 Children&apos;s Park
+                <span className="mt-1 block text-xs font-bold uppercase tracking-widest text-carnival-yellow">
+                  Kurnool, Andhra Pradesh
+                </span>
               </span>
-            </div>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
-              Kurnool&apos;s favourite amusement park — thrilling rides,
-              joyful entertainment, and delicious treats for the whole
-              family.
+            </a>
+
+            <p className="mt-6 max-w-md text-sm leading-6 text-slate-300">
+              Family rides, cheerful food stalls, birthday specials, and
+              all-day carnival energy in the heart of Kurnool.
             </p>
-            <div className="mt-5 flex gap-3">
-              {SOCIALS.map((social) => (
-                <a
-                  key={social.label}
-                  href="#"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-sm transition-colors hover:bg-carnival-pink"
-                  aria-label={social.label}
-                >
-                  {social.emoji}
-                </a>
-              ))}
+
+            <a
+              href="#visit"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-carnival-pink px-6 py-3 font-display text-sm font-bold text-white shadow-[0_10px_25px_rgba(255,93,143,0.4)] transition-all hover:-translate-y-0.5 hover:bg-carnival-red"
+            >
+              <Ticket className="h-4 w-4" />
+              Book Tickets
+            </a>
+          </div>
+
+          <div className="grid grid-cols-2 gap-8">
+            {FOOTER_LINKS.map((group) => (
+              <div key={group.title}>
+                <h2 className="font-display text-sm font-bold uppercase tracking-widest text-carnival-yellow">
+                  {group.title}
+                </h2>
+                <ul className="mt-5 space-y-3">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <a
+                        href={link.href}
+                        className="text-sm text-slate-300 transition-colors hover:text-carnival-pink"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+            <h2 className="font-display text-sm font-bold uppercase tracking-widest text-carnival-teal">
+              Visit Details
+            </h2>
+
+            <div className="mt-5 flex items-start gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-carnival-blue/15 text-carnival-blue">
+                <Clock className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-display font-bold text-white">
+                  Tue - Sun, 10:00 AM - 9:00 PM
+                </p>
+                <p className="text-sm text-slate-400">Closed on Mondays</p>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <p className="font-display font-bold">Explore</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li><a href="#rides" className="hover:text-white">Rides &amp; Attractions</a></li>
-              <li><a href="#stalls" className="hover:text-white">Food &amp; Entertainment</a></li>
-              <li><a href="#gallery" className="hover:text-white">Gallery</a></li>
-              <li><a href="#visit" className="hover:text-white">Plan Your Visit</a></li>
-            </ul>
-          </div>
+            <ul className="mt-5 space-y-3">
+              {CONTACT_LINKS.map((item) => {
+                const Icon = item.icon;
 
-          <div>
-            <p className="font-display font-bold">Visit Us</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li>Children&apos;s Park, Kurnool</li>
-              <li>Andhra Pradesh, India — 518001</li>
-              <li>Tue – Sun, 10 AM – 9 PM</li>
-            </ul>
-          </div>
-
-          <div>
-            <p className="font-display font-bold">Get In Touch</p>
-            <ul className="mt-4 space-y-2 text-sm text-white/60">
-              <li>+91 98765 43210</li>
-              <li>hello@childrensparkkurnool.in</li>
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      className="flex items-center gap-3 text-sm text-slate-300 transition-colors hover:text-carnival-yellow"
+                    >
+                      <Icon className="h-4 w-4 shrink-0 text-carnival-pink" />
+                      <span>{item.label}</span>
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
 
-        <p className="pt-8 text-center text-xs text-white/40">
-          © {new Date().getFullYear()} Children&apos;s Park, Kurnool. All rights reserved. Made with 💛 in Andhra Pradesh.
-        </p>
+        <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            &copy; {new Date().getFullYear()} Children&apos;s Park Kurnool. All
+            rights reserved.
+          </p>
+          <a
+            href="mailto:hello@childrensparkkurnool.in"
+            className="inline-flex items-center gap-2 font-display font-bold text-carnival-yellow transition-colors hover:text-carnival-pink"
+          >
+            <Send className="h-4 w-4" />
+            Plan a group visit
+          </a>
+        </div>
       </div>
     </footer>
   );
